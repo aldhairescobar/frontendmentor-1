@@ -14,16 +14,15 @@ body {
 }
 .article-container {
   background-color: white;
-  width: 610px;
+  width: 620px;
   height: 240px;
   border-radius: 0.5em;
-  overflow: hidden;
+  overflow: visible;
   display: flex;
 }
 
 .image-container {
   flex-basis: 43%;
-  background-color: teal;
   overflow: hidden;
 }
 .image {
@@ -32,7 +31,8 @@ body {
 
 .information-container {
   flex-basis: 57%;
-  padding: 2em;
+  flex-direction: column;
+  padding: 1.6em;
 }
 .header-text {
   margin: 0;
@@ -89,9 +89,46 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: all 0.2s;
 }
 .share-icon {
   padding: 0.5em;
+}
+.share-icon-container:hover {
+  background-color: hsl(217, 19%, 35%);
+}
+.share-icon:hover {
+  filter: brightness(100);
+}
+
+/* Tooltip */
+
+[data-tooltip] {
+  position: relative;
+}
+
+[data-tooltip]::before {
+  content: attr(data-tooltip);
+  position: absolute;
+  left: 50%;
+  transform: translate(-50%, calc(-100% - 0.5rem));
+  background-color: hsl(214, 17%, 51%);
+  color: white;
+  padding: 0.5em 1.5em;
+  border-radius: 0.3em;
+  width: max-content;
+  /*   max-width: 100%;
+ */
+  text-align: center;
+}
+
+[data-tooltip]::after {
+  content: "";
+  position: absolute;
+  border: 0.5rem solid transparent;
+  border-top-color: hsl(214, 17%, 51%);
+  transform: translate(-50%, -1.2rem);
+  left: 50%;
 }
 
 .attribution {
