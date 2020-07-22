@@ -82,53 +82,96 @@ body {
   color: hsl(214, 17%, 51%);
 }
 
-.share-icon-container {
-  align-self: center;
-  background-color: hsl(210, 46%, 95%);
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  transition: all 0.2s;
-}
-.share-icon {
-  padding: 0.5em;
-}
-.share-icon-container:hover {
-  background-color: hsl(217, 19%, 35%);
-}
-.share-icon:hover {
-  filter: brightness(100);
-}
-
-/* Tooltip */
-
-[data-tooltip] {
+.share-section {
   position: relative;
 }
 
-[data-tooltip]::before {
-  content: attr(data-tooltip);
-  position: absolute;
-  left: 50%;
-  transform: translate(-50%, calc(-100% - 0.5rem));
-  background-color: hsl(214, 17%, 51%);
-  color: white;
-  padding: 0.5em 1.5em;
-  border-radius: 0.3em;
-  width: max-content;
-  /*   max-width: 100%;
- */
-  text-align: center;
+.share-section.open .tooltip {
+  opacity: 1;
+  z-index: 1;
 }
 
-[data-tooltip]::after {
+.share-section-btn {
+  background: #eaf1fb;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  transition: background-color 0.5s;
+}
+
+.share-section-btn > svg {
+  fill: #6e8098;
+  transition: fill 0.5s;
+}
+
+.share-section-btn:hover {
+  background-color: #6e8098;
+}
+
+.share-section-btn:hover > svg {
+  fill: #fff;
+}
+
+.tooltip {
+  position: absolute;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  transform: translateX(-50%);
+  left: 50%;
+  top: -80px;
+  padding: 17px 39px;
+  background-color: #48556a;
+  z-index: 1;
+  opacity: 0;
+  border-radius: 10px;
+  transition: opacity 0.5s;
+}
+
+.tooltip::after {
   content: "";
   position: absolute;
-  border: 0.5rem solid transparent;
-  border-top-color: hsl(214, 17%, 51%);
-  transform: translate(-50%, -1.2rem);
   left: 50%;
+  bottom: 0;
+  transform: translate(-50%, 100%);
+  display: block;
+  border: 15px solid #48556a;
+  border-left-color: transparent;
+  border-right-color: transparent;
+  border-bottom-color: transparent;
+}
+
+.tooltip-text {
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-right: 24px;
+  letter-spacing: 4px;
+  color: white;
+}
+
+.tooltip-link {
+  width: 20px;
+  height: 20px;
+  margin-left: 16px;
+}
+
+.tooltip-link:first-of-type {
+  margin-left: 0;
+}
+
+.tooltip-link--fb {
+  background: url("../images/icon-facebook.svg") no-repeat center;
+}
+
+.tooltip-link--tw {
+  background: url("../images/icon-twitter.svg") no-repeat center;
+}
+
+.tooltip-link--pin {
+  background: url("../images/icon-pinterest.svg") no-repeat center;
 }
 
 .attribution {
